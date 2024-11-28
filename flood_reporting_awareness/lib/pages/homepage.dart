@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flood_reporting_awareness/pages/reportfloods.dart';
 
 class Homepage extends StatefulWidget {
   const Homepage({super.key});
@@ -44,22 +45,24 @@ class _HomepageState extends State<Homepage> {
   }
 
   Widget bottomButtons() {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        bottomButtonsText(),
-        SizedBox(height: deviceHeight! * 0.05),
-        bottomButtonsReportFloods(),
-        SizedBox(height: deviceHeight! * 0.05),
-        //bottomButtonsVideoChat(),
-      ],
+    return Flexible(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          bottomButtonsText(),
+          SizedBox(height: deviceHeight! * 0.05),
+          bottomButtonsReportFloods(),
+          SizedBox(height: deviceHeight! * 0.05),
+          //bottomButtonsVideoChat(),
+        ],
+      ),
     );
   }
 
    Widget bottomButtonsText() {
   return Center(
     child: Text(
-      "Ensure the road you are using is not flooded.",
+      "Create awareness by informing others about flood situation in your area.",
       style: TextStyle(
         color: Colors.black,
         fontSize: deviceWidth! * 0.1,
@@ -76,7 +79,12 @@ class _HomepageState extends State<Homepage> {
         foregroundColor: Colors.white,
         backgroundColor: Colors.blue, // foreground
       ),
-      onPressed: () {},
+      onPressed: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const Reportfloods()),
+        );
+      },
       child: Text('Report Floods'),
     );
   }
